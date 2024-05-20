@@ -10,6 +10,8 @@ const winPattens = [
     [0, 4, 8], [2, 4, 6]
 ];
 
+let restart = document.getElementById('reset')
+let screenPlayer = document.querySelector('.screen');
 function cellClicked(cellIndex) {
     console.log('!')
     if (!gameEnded && board[cellIndex] === "") {
@@ -17,6 +19,7 @@ function cellClicked(cellIndex) {
         cell.textContent = currentPlayer;
         cell.setAttribute('data-value', currentPlayer);
         board[cellIndex] = currentPlayer;
+
         if (checkWinner(currentPlayer)) {
             document.getElementById("message").textContent = `Игрок ${currentPlayer} победил!`;
             gameEnded = true;
@@ -24,7 +27,10 @@ function cellClicked(cellIndex) {
             document.getElementById("message").textContent = "Ничья!";
             gameEnded = true;
         } else {
-            currentPlayer = currentPlayer === "X" ? "O" : "X"
+            screenPlayer.classList.remove(`player${currentPlayer}`);
+            currentPlayer = currentPlayer === "X" ? "O" : "X";
+            screenPlayer.innerText = currentPlayer;
+            screenPlayer.classList.add(`player${currentPlayer}`);
         }
     }
 }
@@ -40,3 +46,8 @@ function checkWinner(player) {
 function isBoardFull() {
     return board.every(cell => cell !== "");
 }
+
+function reset() {
+    window.location.reload();
+}
+restart.addEventListener("click", reset);
