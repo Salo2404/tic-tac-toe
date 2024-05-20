@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    color: #ff9199;
+    color: #fd0011;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,6 +13,7 @@ h1 {
     margin-top: 20px;
     font-size: 56px;
 }
+
 
 #gameBoard {
     display: grid;
@@ -41,5 +42,18 @@ p {
 
 .cell[data-value='O'] {
     color: #C00000;
+}
+
+.btn {
+    height: 100px;
+    width: 160px;
+    font-size: 24px;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+.btn-container {
+    padding-left: 155px;
 }
 
